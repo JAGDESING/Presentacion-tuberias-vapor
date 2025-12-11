@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conducción de Vapor en Tuberías Industriales | DML Ingenieros Consultores SAS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --dml-green: #1B7340;
+            --dml-green-light: #2A9D5C;
+            --dml-green-dark: #145A32;
+            --dml-green-transparent: rgba(27, 115, 64, 0.15);
+            --dml-green-glass: rgba(27, 115, 64, 0.85);
+            --accent-gold: #D4AF37;
+            --accent-red: #C62828;
+            --accent-orange: #F57C00;
+            --text-dark: #1a1a2e;
+            --text-light: #f8f9fa;
+            --bg-dark: #0d1117;
+            --bg-light: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.15);
+            --shadow-strong: 0 25px 80px rgba(0,0,0,0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, #0d1117 0%, #1a2332 50%, #0d1117 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ============= NAVIGATION ============= */
+        .nav-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 17, 23, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(27, 115, 64, 0.3);
+            padding: 0.75rem 2rem;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .nav-link:hover {
+            background: var(--dml-green-transparent);
+            opacity: 1;
+            color: var(--dml-green-light);
+        }
+
+        /* ============= HERO SECTION ============= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 6rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 80%, rgba(27, 115, 64, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(27, 115, 64, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(42, 157, 92, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--dml-green-transparent);
+            border: 1px solid rgba(27, 115, 64, 0.4);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--dml-green-light);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(27, 115, 64, 0.4); }
+            50% { box-shadow: 0 0 0 15px rgba(27, 115, 64, 0); }
+        }
+
+        .hero-logo {
+            width: 200px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(27, 115, 64, 0.3));
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #1B7340 50%, #2A9D5C 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dml-green-light);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ============= SECTIONS ============= */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            color: rgba(27, 115, 64, 0.15);
+            line-height: 1;
+            margin-bottom: -2rem;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dml-green), var(--dml-green-light));
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+        }
+
+        /* ============= CARDS ============= */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(27, 115, 64, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dml-green), var(--dml-green-light));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+            border-color: rgba(27, 115, 64, 0.5);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--dml-green-transparent);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--dml-green-light);
+        }
+
+        .card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* ============= PRESSURE CLASSIFICATION ============= */
+        .pressure-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .pressure-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pressure-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .pressure-card.low {
+            border-color: rgba(76, 175, 80, 0.4);
+        }
+
+        .pressure-card.medium {
+            border-color: rgba(255, 152, 0, 0.4);
+        }
+
+        .pressure-card.high {
+            border-color: rgba(244, 67, 54, 0.4);
+        }
+
+        .pressure-card:hover {
+            transform: scale(1.03);
+        }
+
+        .pressure-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pressure-card.low .pressure-icon { color: #4CAF50; }
+        .pressure-card.medium .pressure-icon { color: #FF9800; }
+        .pressure-card.high .pressure-icon { color: #F44336; }
+
+        .pressure-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .pressure-range {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pressure-card.low .pressure-range { color: #4CAF50; }
+        .pressure-card.medium .pressure-range { color: #FF9800; }
+        .pressure-card.high .pressure-range { color: #F44336; }
+
+        .pressure-temp {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .pressure-apps {
+            text-align: left;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        .pressure-apps h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.75rem;
+        }
+
+        .pressure-apps ul {
+            list-style: none;
+        }
+
+        .pressure-apps li {
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pressure-apps li::before {
+            content: '✓';
+            color: var(--dml-green-light);
+            font-weight: bold;
+        }
+
+        /* ============= TABLES ============= */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 20px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(27, 115, 64, 0.2);
+            padding: 0.5rem;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        .tech-table thead {
+            background: var(--dml-green-glass);
+        }
+
+        .tech-table th {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .tech-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .tech-table tbody tr:hover {
+            background: rgba(27, 115, 64, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-green { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
+        .badge-orange { background: rgba(255, 152, 0, 0.2); color: #FF9800; }
+        .badge-red { background: rgba(244, 67, 54, 0.2); color: #F44336; }
+        .badge-blue { background: rgba(33, 150, 243, 0.2); color: #2196F3; }
+
+        /* ============= DANGER SECTION ============= */
+        .danger-section {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.1) 0%, rgba(13, 17, 23, 0.95) 100%);
+        }
+
+        .danger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .danger-card {
+            background: rgba(198, 40, 40, 0.1);
+            border: 1px solid rgba(198, 40, 40, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .danger-card:hover {
+            background: rgba(198, 40, 40, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .danger-icon {
+            font-size: 2.5rem;
+            color: #EF5350;
+            margin-bottom: 1rem;
+        }
+
+        .danger-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: #EF5350;
+            margin-bottom: 0.75rem;
+        }
+
+        .danger-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ============= ACCIDENT CASES ============= */
+        .case-study {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 25px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(198, 40, 40, 0.2);
+        }
+
+        .case-header {
+            background: linear-gradient(90deg, rgba(198, 40, 40, 0.3), rgba(198, 40, 40, 0.1));
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .case-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .case-tag {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .case-tag.fatal {
+            color: #EF5350;
+        }
+
+        .case-body {
+            padding: 2rem;
+        }
+
+        .case-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .case-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .case-section h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--dml-green-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .case-section p, .case-section ul {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .case-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .case-section li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .case-section li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--dml-green-light);
+            font-weight: bold;
+        }
+
+        .lesson-box {
+            background: rgba(27, 115, 64, 0.15);
+            border-left: 4px solid var(--dml-green);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-top: 1rem;
+        }
+
+        .lesson-box h5 {
+            color: var(--dml-green-light) !important;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ============= GASKETS SECTION ============= */
+        .gasket-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gasket-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(27, 115, 64, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .gasket-card:hover {
+            border-color: var(--dml-green);
+            transform: translateY(-5px);
+        }
+
+        .gasket-header {
+            background: var(--dml-green-glass);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .gasket-header h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .gasket-header .temp-range {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .gasket-body {
+            padding: 1.5rem;
+        }
+
+        .gasket-spec {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gasket-spec:last-child {
+            border-bottom: none;
+        }
+
+        .gasket-spec-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .gasket-spec-value {
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .gasket-apps {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .gasket-apps h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .gasket-apps p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ============= BEST PRACTICES ============= */
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .practice-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 15px;
+            border: 1px solid rgba(27, 115, 64, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .practice-item:hover {
+            border-color: var(--dml-green);
+            background: rgba(27, 115, 64, 0.05);
+        }
+
+        .practice-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dml-green);
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        .practice-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .practice-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ============= REFERENCES ============= */
+        .references-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .reference-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(27, 115, 64, 0.1);
+        }
+
+        .reference-icon {
+            color: var(--dml-green-light);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .reference-text {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .reference-text strong {
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* ============= FOOTER ============= */
+        .footer {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(27, 115, 64, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 180px;
+            margin-bottom: 2rem;
+            filter: brightness(1.1);
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dml-green-light);
+            margin-bottom: 1rem;
+        }
+
+        .footer-info p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-item i {
+            color: var(--dml-green-light);
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* ============= SCROLL ANIMATIONS ============= */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============= RESPONSIVE ============= */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .card-grid,
+            .pressure-grid,
+            .gasket-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .case-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* ============= SPECIAL ELEMENTS ============= */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--dml-green-transparent), rgba(27, 115, 64, 0.05));
+            border-left: 4px solid var(--dml-green);
+            padding: 1.5rem 2rem;
+            border-radius: 0 15px 15px 0;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dml-green-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.15), rgba(198, 40, 40, 0.05));
+            border-left: 4px solid var(--accent-red);
+            padding: 1.5rem 2rem;
+            border-radius: 0 15px 15px 0;
+            margin: 2rem 0;
+        }
+
+        .warning-box h4 {
+            color: #EF5350;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .code-box {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--dml-green-light);
+        }
+
+        /* ============= FLOW CHART ============= */
+        .flow-chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .flow-step {
+            background: var(--dml-green-transparent);
+            border: 2px solid var(--dml-green);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover {
+            transform: scale(1.05);
+            background: rgba(27, 115, 64, 0.3);
+        }
+
+        .flow-step i {
+            font-size: 2rem;
+            color: var(--dml-green-light);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .flow-step span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: var(--dml-green);
+        }
+
+        @media (max-width: 768px) {
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <img src="assets/dml_logo.png" alt="DML Ingenieros Consultores">
+            </div>
+            <div class="nav-menu">
+                <a href="#clasificacion" class="nav-link">Clasificación</a>
+                <a href="#materiales" class="nav-link">Materiales</a>
+                <a href="#cedulas" class="nav-link">Cédulas</a>
+                <a href="#empaques" class="nav-link">Empaques</a>
+                <a href="#peligros" class="nav-link">Peligros</a>
+                <a href="#accidentes" class="nav-link">Accidentes</a>
+                <a href="#practicas" class="nav-link">Mejores Prácticas</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-graduation-cap"></i>
+                Capacitación Técnica
+            </div>
+            <img src="assets/dml_logo.png" alt="DML Ingenieros Consultores" class="hero-logo">
+            <h1>Conducción de Vapor en Tuberías Industriales</h1>
+            <p class="hero-subtitle">
+                Guía técnica completa sobre selección de materiales, cédulas, empaques y prevención de accidentes 
+                en sistemas de distribución de vapor
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">+15</span>
+                    <span class="stat-label">Normas Técnicas</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Niveles de Presión</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Casos de Estudio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Steam Classification -->
+    <section class="section" id="clasificacion">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">01</div>
+                <h2 class="section-title">Clasificación del Vapor por Presión</h2>
+                <p class="section-subtitle">
+                    La presión de operación determina los requisitos de diseño, materiales y seguridad del sistema
+                </p>
+            </div>
+
+            <div class="pressure-grid fade-in">
+                <div class="pressure-card low">
+                    <div class="pressure-icon"><i class="fas fa-temperature-low"></i></div>
+                    <h3>Baja Presión</h3>
+                    <div class="pressure-range">≤ 15 psig</div>
+                    <div class="pressure-temp">Temperatura máx: 250°F (121°C)</div>
+                    <div class="pressure-apps">
+                        <h4>Aplicaciones Típicas</h4>
+                        <ul>
+                            <li>Sistemas HVAC</li>
+                            <li>Calefacción de edificios</li>
+                            <li>Lavanderías comerciales</li>
+                            <li>Cocinas industriales</li>
+                            <li>Humidificación</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pressure-card medium">
+                    <div class="pressure-icon"><i class="fas fa-temperature-half"></i></div>
+                    <h3>Media Presión</h3>
+                    <div class="pressure-range">16-150 psig</div>
+                    <div class="pressure-temp">Temperatura: 250-366°F (121-186°C)</div>
+                    <div class="pressure-apps">
+                        <h4>Aplicaciones Típicas</h4>
+                        <ul>
+                            <li>Industria alimenticia</li>
+                            <li>Procesos farmacéuticos</li>
+                            <li>Manufactura textil</li>
+                            <li>Intercambiadores de calor</li>
+                            <li>Autoclaves</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pressure-card high">
+                    <div class="pressure-icon"><i class="fas fa-temperature-high"></i></div>
+                    <h3>Alta Presión</h3>
+                    <div class="pressure-range">> 150 psig</div>
+                    <div class="pressure-temp">Temperatura: >366°F (>186°C)</div>
+                    <div class="pressure-apps">
+                        <h4>Aplicaciones Típicas</h4>
+                        <ul>
+                            <li>Generación eléctrica</li>
+                            <li>Refinerías de petróleo</li>
+                            <li>Plantas petroquímicas</li>
+                            <li>Turbinas de vapor</li>
+                            <li>Procesos de alta temperatura</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box fade-in">
+                <h4><i class="fas fa-info-circle"></i> Vapor Saturado vs. Sobrecalentado</h4>
+                <p>
+                    <strong>Vapor Saturado:</strong> Existe en equilibrio con el agua líquida a una temperatura y presión específicas. 
+                    Es ideal para transferencia de calor debido a su alto calor latente.<br><br>
+                    <strong>Vapor Sobrecalentado:</strong> Se calienta por encima de su temperatura de saturación. 
+                    Se utiliza en turbinas de potencia donde la eficiencia térmica es crítica. Requiere materiales 
+                    con aleaciones especiales como Cr-Mo (ASTM A335).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Materials -->
+    <section class="section" id="materiales">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">02</div>
+                <h2 class="section-title">Materiales de Tubería según Normas</h2>
+                <p class="section-subtitle">
+                    Selección de materiales basada en condiciones de servicio y códigos aplicables
+                </p>
+            </div>
+
+            <div class="table-container fade-in">
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Norma ASTM</th>
+                            <th>Material</th>
+                            <th>Tipo</th>
+                            <th>Temp. Máx.</th>
+                            <th>Aplicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="code-box">ASTM A53</span></td>
+                            <td>Acero al Carbono</td>
+                            <td>Con/Sin costura, ERW</td>
+                            <td>400°C (752°F)</td>
+                            <td><span class="badge badge-green">Uso general</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">ASTM A106 Gr. B</span></td>
+                            <td>Acero al Carbono</td>
+                            <td>Sin costura</td>
+                            <td>427°C (800°F)</td>
+                            <td><span class="badge badge-orange">Alta temperatura</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">ASTM A335 P11</span></td>
+                            <td>1¼Cr-½Mo</td>
+                            <td>Sin costura aleado</td>
+                            <td>593°C (1100°F)</td>
+                            <td><span class="badge badge-red">Vapor sobrecalentado</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">ASTM A335 P22</span></td>
+                            <td>2¼Cr-1Mo</td>
+                            <td>Sin costura aleado</td>
+                            <td>649°C (1200°F)</td>
+                            <td><span class="badge badge-red">Muy alta temperatura</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">ASTM A335 P91</span></td>
+                            <td>9Cr-1Mo-V</td>
+                            <td>Sin costura aleado</td>
+                            <td>649°C (1200°F)</td>
+                            <td><span class="badge badge-red">Plantas de potencia</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">ASTM A312</span></td>
+                            <td>Acero Inoxidable 304/316</td>
+                            <td>Sin costura/Soldada</td>
+                            <td>816°C (1500°F)</td>
+                            <td><span class="badge badge-blue">Corrosivo</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-grid fade-in" style="margin-top: 3rem;">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-book"></i></div>
+                    <h3>ASME B31.1 - Power Piping</h3>
+                    <p>
+                        Código para tuberías de potencia en instalaciones donde hay calderas ASME Sección I. 
+                        Aplica a vapor, agua de alimentación, drenajes y condensados. Incluye ecuaciones para 
+                        cálculo de espesor de pared.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-flask"></i></div>
+                    <h3>ASME B31.3 - Process Piping</h3>
+                    <p>
+                        Código para tuberías de proceso en refinerías, plantas químicas, petroquímicas y 
+                        farmacéuticas. Similar a B31.1 pero con consideraciones específicas para fluidos 
+                        de proceso y condiciones severas.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-ruler"></i></div>
+                    <h3>ASME B36.10M</h3>
+                    <p>
+                        Establece las dimensiones estandarizadas para tuberías de acero soldadas y sin costura. 
+                        Define los schedules (cédulas) desde SCH 5 hasta XXS, con espesores de pared y 
+                        diámetros nominales.
+                    </p>
+                </div>
+            </div>
+
+            <div class="warning-box fade-in">
+                <h4><i class="fas fa-exclamation-triangle"></i> Advertencia Crítica: Grafitización</h4>
+                <p>
+                    La exposición prolongada del acero al carbono a temperaturas superiores a 427°C (800°F) 
+                    puede causar <strong>grafitización</strong> - la conversión de carburos a grafito libre, 
+                    debilitando severamente el material. Para servicio sobre esta temperatura, especificar 
+                    aceros aleados Cr-Mo (A335).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Pipe Schedules -->
+    <section class="section" id="cedulas">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">03</div>
+                <h2 class="section-title">Selección de Cédulas (Schedules)</h2>
+                <p class="section-subtitle">
+                    El espesor de pared adecuado es crítico para la integridad del sistema
+                </p>
+            </div>
+
+            <div class="table-container fade-in">
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Schedule</th>
+                            <th>Designación</th>
+                            <th>Espesor Relativo</th>
+                            <th>Aplicación Típica</th>
+                            <th>Presión Servicio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="code-box">SCH 10</span></td>
+                            <td>Pared ligera</td>
+                            <td>Mínimo</td>
+                            <td>Baja presión, drenajes</td>
+                            <td><span class="badge badge-green">≤ 50 psig</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">SCH 40 / STD</span></td>
+                            <td>Estándar</td>
+                            <td>Medio</td>
+                            <td>Vapor baja-media presión</td>
+                            <td><span class="badge badge-green">≤ 150 psig</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">SCH 80 / XS</span></td>
+                            <td>Extra Fuerte</td>
+                            <td>Alto</td>
+                            <td>Vapor media-alta presión</td>
+                            <td><span class="badge badge-orange">150-600 psig</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">SCH 160</span></td>
+                            <td>Doble Extra</td>
+                            <td>Muy Alto</td>
+                            <td>Alta presión, crítico</td>
+                            <td><span class="badge badge-red">> 600 psig</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="code-box">XXS</span></td>
+                            <td>Doble Extra Strong</td>
+                            <td>Máximo</td>
+                            <td>Presiones extremas</td>
+                            <td><span class="badge badge-red">> 1000 psig</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight-box fade-in">
+                <h4><i class="fas fa-calculator"></i> Ecuación de Espesor ASME B31.1</h4>
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; margin: 1rem 0;">
+                    t<sub>m</sub> = (P × D) / (2 × (S × E + P × Y)) + A
+                </p>
+                <p>
+                    <strong>Donde:</strong><br>
+                    t<sub>m</sub> = Espesor mínimo requerido | P = Presión de diseño | D = Diámetro exterior<br>
+                    S = Esfuerzo admisible | E = Factor de calidad de junta | Y = Coeficiente de temperatura | A = Tolerancia por corrosión
+                </p>
+            </div>
+
+            <div class="card-grid fade-in" style="margin-top: 2rem;">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-percentage"></i></div>
+                    <h3>Tolerancia de Manufactura</h3>
+                    <p>
+                        Las tuberías sin costura tienen una tolerancia de manufactura del <strong>-12.5%</strong> 
+                        en el espesor de pared. Este factor DEBE incluirse en los cálculos de diseño. 
+                        El espesor nominal siempre es mayor que el mínimo calculado.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Margen de Corrosión</h3>
+                    <p>
+                        Para acero al carbono en servicio de vapor, típicamente se añade un margen de 
+                        corrosión de <strong>3 mm (0.125")</strong>. Para acero inoxidable, puede ser 
+                        0 mm dependiendo del medio y condiciones.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Gaskets -->
+    <section class="section" id="empaques">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">04</div>
+                <h2 class="section-title">Tipos de Empaques para Vapor</h2>
+                <p class="section-subtitle">
+                    La selección correcta del empaque previene fugas y accidentes catastróficos
+                </p>
+            </div>
+
+            <div class="gasket-comparison fade-in">
+                <div class="gasket-card">
+                    <div class="gasket-header">
+                        <h4>Grafito Flexible</h4>
+                        <div class="temp-range">-240°C a +550°C</div>
+                    </div>
+                    <div class="gasket-body">
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Presión Máxima</span>
+                            <span class="gasket-spec-value">300 bar</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Norma</span>
+                            <span class="gasket-spec-value">ASME B16.21</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Ambiente</span>
+                            <span class="gasket-spec-value">No oxidante</span>
+                        </div>
+                        <div class="gasket-apps">
+                            <h5>Aplicaciones</h5>
+                            <p>Vapor saturado y sobrecalentado, intercambiadores de calor, calderas, válvulas de alta temperatura.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gasket-card">
+                    <div class="gasket-header">
+                        <h4>Espirometálico (Spiral Wound)</h4>
+                        <div class="temp-range">-250°C a +1000°C</div>
+                    </div>
+                    <div class="gasket-body">
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Presión Máxima</span>
+                            <span class="gasket-spec-value">450 bar (Clase 2500)</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Norma</span>
+                            <span class="gasket-spec-value">ASME B16.20</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Relleno</span>
+                            <span class="gasket-spec-value">Grafito / PTFE / Mica</span>
+                        </div>
+                        <div class="gasket-apps">
+                            <h5>Aplicaciones</h5>
+                            <p>Alta presión/temperatura, bridas raised face, fluctuaciones térmicas, servicio crítico.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gasket-card">
+                    <div class="gasket-header">
+                        <h4>PTFE / ePTFE</h4>
+                        <div class="temp-range">-200°C a +260°C</div>
+                    </div>
+                    <div class="gasket-body">
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Presión Máxima</span>
+                            <span class="gasket-spec-value">100 bar</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Norma</span>
+                            <span class="gasket-spec-value">ASME B16.21</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Ventaja</span>
+                            <span class="gasket-spec-value">Alta resistencia química</span>
+                        </div>
+                        <div class="gasket-apps">
+                            <h5>Aplicaciones</h5>
+                            <p>Vapor de baja presión, industria farmacéutica, alimenticia. NO usar sobre 260°C.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gasket-card">
+                    <div class="gasket-header">
+                        <h4>RTJ (Ring Type Joint)</h4>
+                        <div class="temp-range">Hasta +1200°C</div>
+                    </div>
+                    <div class="gasket-body">
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Presión Máxima</span>
+                            <span class="gasket-spec-value">> 1000 bar</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Material</span>
+                            <span class="gasket-spec-value">Acero suave, SS, Inconel</span>
+                        </div>
+                        <div class="gasket-spec">
+                            <span class="gasket-spec-label">Norma</span>
+                            <span class="gasket-spec-value">ASME B16.20, API 6A</span>
+                        </div>
+                        <div class="gasket-apps">
+                            <h5>Aplicaciones</h5>
+                            <p>Presiones extremas, industria petrolera, plantas de potencia, servicio crítico zero fugas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box fade-in">
+                <h4><i class="fas fa-ban"></i> NUNCA use estos empaques para vapor</h4>
+                <p>
+                    <strong>• Caucho natural (NR):</strong> Se degrada rápidamente sobre 80°C<br>
+                    <strong>• NBR (Buna-N):</strong> Límite de 100°C, inaceptable para vapor<br>
+                    <strong>• EPDM estándar:</strong> Solo hasta 150°C, riesgo de falla en vapor saturado<br>
+                    <strong>• Corcho:</strong> Se carboniza y falla catastróficamente con vapor
+                </p>
+            </div>
+
+            <div class="highlight-box fade-in">
+                <h4><i class="fas fa-check-circle"></i> Selección según ASME B16.20</h4>
+                <p>
+                    <strong>Clase 150-300:</strong> Espirometálico con anillo exterior (Estilo CG)<br>
+                    <strong>Clase 600:</strong> Espirometálico con anillo interior y exterior (Estilo CGI)<br>
+                    <strong>Clase 900+:</strong> Espirometálico CGI obligatorio, considerar RTJ para servicio crítico
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Dangers -->
+    <section class="section danger-section" id="peligros">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">05</div>
+                <h2 class="section-title">Peligros por Selección Incorrecta</h2>
+                <p class="section-subtitle">
+                    Las consecuencias de una mala selección pueden ser catastróficas
+                </p>
+            </div>
+
+            <div class="danger-grid fade-in">
+                <div class="danger-card">
+                    <div class="danger-icon"><i class="fas fa-burst"></i></div>
+                    <h4>Ruptura Catastrófica</h4>
+                    <p>
+                        Una cédula insuficiente puede fallar violentamente bajo presión. 
+                        El vapor a 100 psig contiene energía equivalente a ~25 kg de TNT por m³.
+                        La falla libera esta energía instantáneamente.
+                    </p>
+                </div>
+
+                <div class="danger-card">
+                    <div class="danger-icon"><i class="fas fa-water"></i></div>
+                    <h4>Golpe de Ariete (Water Hammer)</h4>
+                    <p>
+                        El condensado atrapado puede generar picos de presión de hasta 
+                        <strong>10 MPa</strong> (100x la presión normal). Destruye válvulas, 
+                        rompe bridas y expulsa empaques violentamente.
+                    </p>
+                </div>
+
+                <div class="danger-card">
+                    <div class="danger-icon"><i class="fas fa-fire"></i></div>
+                    <h4>Quemaduras Severas</h4>
+                    <p>
+                        El vapor a 100°C causa quemaduras de tercer grado en menos de 1 segundo. 
+                        A 150°C, el daño es instantáneo. Las fugas de vapor son particularmente 
+                        peligrosas porque son invisibles.
+                    </p>
+                </div>
+
+                <div class="danger-card">
+                    <div class="danger-icon"><i class="fas fa-skull-crossbones"></i></div>
+                    <h4>Fatalidades</h4>
+                    <p>
+                        Entre 2000-2020, se registraron más de 150 muertes solo en EE.UU. 
+                        relacionadas con fallas de sistemas de vapor. La mayoría fueron 
+                        prevenibles con mantenimiento e inspección adecuados.
+                    </p>
+                </div>
+
+                <div class="danger-card">
+                    <div class="danger-icon"><i class="fas fa-atom"></i></div>
+                    <h4>BLEVE (Explosión)</h4>
+                    <p>
+                        Boiling Liquid Expanding Vapor Explosion - cuando un recipiente 
+                        presurizado falla, el líquido sobrecalentado se vaporiza instantáneamente, 
+                        multiplicando su volumen hasta 1,700 veces.
+                    </p>
+                </div>
+
+                <div class="danger-card">
+                    <div class="danger-icon"><i class="fas fa-biohazard"></i></div>
+                    <h4>Liberación de Asbesto</h4>
+                    <p>
+                        Muchas tuberías antiguas tienen aislamiento con asbesto. 
+                        Una ruptura puede liberar fibras cancerígenas, requiriendo 
+                        evacuación y descontaminación costosa.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flow-chart fade-in">
+                <div class="flow-step">
+                    <i class="fas fa-wrench"></i>
+                    <span>Selección<br>Incorrecta</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step">
+                    <i class="fas fa-clock"></i>
+                    <span>Degradación<br>Progresiva</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Señales de<br>Advertencia</span>
+                </div>
+                <div class="flow-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="flow-step">
+                    <i class="fas fa-bomb"></i>
+                    <span>Falla<br>Catastrófica</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Accident Cases -->
+    <section class="section" id="accidentes">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">06</div>
+                <h2 class="section-title">Casos Reales de Accidentes</h2>
+                <p class="section-subtitle">
+                    Análisis de incidentes documentados para aprender de los errores
+                </p>
+            </div>
+
+            <!-- Case 1 -->
+            <div class="case-study fade-in">
+                <div class="case-header">
+                    <div class="case-title">Loy-Lange Box Company - St. Louis, Missouri</div>
+                    <div class="case-meta">
+                        <span class="case-tag"><i class="fas fa-calendar"></i> 3 Abril 2017</span>
+                        <span class="case-tag fatal"><i class="fas fa-skull"></i> 4 Fatalidades</span>
+                    </div>
+                </div>
+                <div class="case-body">
+                    <div class="case-section">
+                        <h5>Descripción del Incidente</h5>
+                        <p>
+                            Un receptor semi-cerrado (SCR) del sistema de vapor falló catastróficamente, 
+                            lanzando el recipiente de 1,360 kg (3,000 lb) más de 150 metros a través del techo 
+                            de un negocio vecino. Un empleado murió en la explosión y tres personas en el 
+                            negocio adyacente fallecieron por el impacto del recipiente.
+                        </p>
+                    </div>
+                    <div class="case-section">
+                        <h5>Causas Identificadas (CSB)</h5>
+                        <ul>
+                            <li><strong>Corrosión severa:</strong> Adelgazamiento del fondo del recipiente por corrosión por oxígeno durante años</li>
+                            <li><strong>Reparación deficiente:</strong> En 2012 se realizó una reparación que dejó material corroído en servicio</li>
+                            <li><strong>Sin inspecciones:</strong> El recipiente nunca fue registrado ni inspeccionado por la ciudad</li>
+                            <li><strong>Advertencias ignoradas:</strong> Se reportó una fuga el viernes anterior; continuaron operando</li>
+                            <li><strong>Falta de programa de integridad mecánica</strong></li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h5><i class="fas fa-lightbulb"></i> Lecciones Aprendidas</h5>
+                        <p>
+                            Los sistemas de vapor requieren programas formales de inspección y mantenimiento. 
+                            Las fugas son señales de advertencia que NUNCA deben ignorarse. La corrosión 
+                            debe monitorearse activamente con mediciones de espesor periódicas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-study fade-in">
+                <div class="case-header">
+                    <div class="case-title">Explosión de Vapor - New York City</div>
+                    <div class="case-meta">
+                        <span class="case-tag"><i class="fas fa-calendar"></i> 18 Julio 2007</span>
+                        <span class="case-tag fatal"><i class="fas fa-skull"></i> 1 Fatalidad</span>
+                    </div>
+                </div>
+                <div class="case-body">
+                    <div class="case-section">
+                        <h5>Descripción del Incidente</h5>
+                        <p>
+                            Una tubería de vapor de 83 años explotó en pleno Manhattan, creando un cráter 
+                            de 12 metros y enviando vapor y escombros a más de 20 pisos de altura. 
+                            Una persona murió por paro cardíaco durante la evacuación y docenas resultaron heridas.
+                        </p>
+                    </div>
+                    <div class="case-section">
+                        <h5>Causas Identificadas</h5>
+                        <ul>
+                            <li><strong>Golpe de ariete:</strong> Condensado atrapado causó sobrepresión de hasta 5x lo normal</li>
+                            <li><strong>Válvulas de trampa obstruidas:</strong> Sellante de una reparación anterior bloqueó las trampas</li>
+                            <li><strong>Tubería de hierro fundido:</strong> Material frágil que falla catastróficamente</li>
+                            <li><strong>Infraestructura envejecida:</strong> Sin programa de reemplazo preventivo</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h5><i class="fas fa-lightbulb"></i> Lecciones Aprendidas</h5>
+                        <p>
+                            Las trampas de vapor requieren mantenimiento programado. El hierro fundido 
+                            NO debe usarse en líneas de vapor principales. Los programas de reemplazo 
+                            de infraestructura envejecida son esenciales.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-study fade-in">
+                <div class="case-header">
+                    <div class="case-title">Crucero Nieuw Amsterdam - Bahamas</div>
+                    <div class="case-meta">
+                        <span class="case-tag"><i class="fas fa-calendar"></i> 22 Marzo 2024</span>
+                        <span class="case-tag fatal"><i class="fas fa-skull"></i> 2 Fatalidades</span>
+                    </div>
+                </div>
+                <div class="case-body">
+                    <div class="case-section">
+                        <h5>Descripción del Incidente</h5>
+                        <p>
+                            Una junta de expansión tipo fuelle en la tubería principal de vapor del cuarto 
+                            de máquinas se rompió, llenando el espacio con vapor a más de 100°C en segundos. 
+                            Dos tripulantes no pudieron escapar y fallecieron por las quemaduras.
+                        </p>
+                    </div>
+                    <div class="case-section">
+                        <h5>Causas Identificadas (Dutch Safety Board)</h5>
+                        <ul>
+                            <li><strong>Golpe de ariete:</strong> Una válvula normalmente entreabierta fue cerrada completamente</li>
+                            <li><strong>Condensado acumulado:</strong> La línea "muerta" acumuló condensado por 5 días</li>
+                            <li><strong>Procedimiento informal:</strong> La práctica de dejar válvulas entreabiertas no estaba documentada</li>
+                            <li><strong>Punto débil:</strong> La junta de expansión falló como eslabón más débil del sistema</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h5><i class="fas fa-lightbulb"></i> Lecciones Aprendidas</h5>
+                        <p>
+                            Los "workarounds" operacionales deben formalizarse o eliminarse. Las secciones 
+                            de tubería que pueden acumular condensado necesitan drenaje activo. Los 
+                            componentes flexibles son puntos de falla críticos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 4 -->
+            <div class="case-study fade-in">
+                <div class="case-header">
+                    <div class="case-title">Brookhaven National Laboratory - New York</div>
+                    <div class="case-meta">
+                        <span class="case-tag"><i class="fas fa-calendar"></i> Octubre 1997</span>
+                        <span class="case-tag fatal"><i class="fas fa-skull"></i> 2 Fatalidades</span>
+                    </div>
+                </div>
+                <div class="case-body">
+                    <div class="case-section">
+                        <h5>Descripción del Incidente</h5>
+                        <p>
+                            Cuatro trabajadores estaban en una bóveda de 2.4m x 2.4m cuando un golpe de ariete 
+                            expulsó los empaques de la tubería principal de vapor de 110 psig. La bóveda se 
+                            llenó de vapor en segundos. Dos trabajadores murieron, dos sobrevivieron.
+                        </p>
+                    </div>
+                    <div class="case-section">
+                        <h5>Causas Identificadas</h5>
+                        <ul>
+                            <li><strong>Arranque del sistema:</strong> Vapor admitido a tubería fría con condensado</li>
+                            <li><strong>Falla de empaque:</strong> El golpe de ariete expulsó los empaques de una válvula de 14"</li>
+                            <li><strong>Espacio confinado:</strong> Sin ruta de escape cuando se llenó de vapor</li>
+                            <li><strong>Procedimientos inadecuados:</strong> Drenaje insuficiente antes del arranque</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h5><i class="fas fa-lightbulb"></i> Lecciones Aprendidas</h5>
+                        <p>
+                            Los procedimientos de arranque de sistemas de vapor son críticos. SIEMPRE drenar 
+                            el condensado antes de admitir vapor. Los espacios confinados cerca de equipos 
+                            de vapor requieren análisis de riesgo específico.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 5 -->
+            <div class="case-study fade-in">
+                <div class="case-header">
+                    <div class="case-title">Salem Harbor Generating Station - Massachusetts</div>
+                    <div class="case-meta">
+                        <span class="case-tag"><i class="fas fa-calendar"></i> 6 Nov 2007</span>
+                        <span class="case-tag fatal"><i class="fas fa-skull"></i> 3 Fatalidades</span>
+                    </div>
+                </div>
+                <div class="case-body">
+                    <div class="case-section">
+                        <h5>Descripción del Incidente</h5>
+                        <p>
+                            Múltiples tubos de la pared divisoria de una caldera fallaron catastróficamente, 
+                            liberando vapor de alta presión en el área de trabajo. Tres empleados fallecieron 
+                            por las quemaduras de vapor.
+                        </p>
+                    </div>
+                    <div class="case-section">
+                        <h5>Causas Identificadas</h5>
+                        <ul>
+                            <li><strong>Erosión/corrosión:</strong> Adelgazamiento de pared de tubos por años de servicio</li>
+                            <li><strong>Inspección insuficiente:</strong> No se detectó el adelgazamiento progresivo</li>
+                            <li><strong>Mantenimiento diferido:</strong> Presión de producción sobre seguridad</li>
+                        </ul>
+                    </div>
+                    <div class="lesson-box">
+                        <h5><i class="fas fa-lightbulb"></i> Lecciones Aprendidas</h5>
+                        <p>
+                            Las tuberías de agua de alimentación y vapor requieren mediciones de espesor 
+                            periódicas (ultrasónico). El FAC (Flow-Accelerated Corrosion) es un mecanismo 
+                            de daño conocido que debe monitorearse en plantas de generación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Best Practices -->
+    <section class="section" id="practicas">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">07</div>
+                <h2 class="section-title">Mejores Prácticas de Ingeniería</h2>
+                <p class="section-subtitle">
+                    Recomendaciones para diseño, operación y mantenimiento seguros
+                </p>
+            </div>
+
+            <div class="practices-grid fade-in">
+                <div class="practice-item">
+                    <div class="practice-number">01</div>
+                    <div class="practice-content">
+                        <h4>Diseño con Margen de Seguridad</h4>
+                        <p>
+                            Siempre diseñar para la condición más severa anticipada, incluyendo 
+                            transitorios y arranques. Usar factor de seguridad mínimo de 3.5 
+                            según ASME.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">02</div>
+                    <div class="practice-content">
+                        <h4>Programa de Trampas de Vapor</h4>
+                        <p>
+                            Implementar inspección trimestral de todas las trampas de vapor. 
+                            Una trampa fallada en abierto desperdicia energía; fallada en 
+                            cerrado causa golpe de ariete.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">03</div>
+                    <div class="practice-content">
+                        <h4>Procedimientos de Arranque</h4>
+                        <p>
+                            Documentar y seguir estrictamente: drenar condensado, abrir 
+                            válvulas de calentamiento lentamente, verificar trampas 
+                            operando, incrementar presión gradualmente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">04</div>
+                    <div class="practice-content">
+                        <h4>Inspección de Integridad</h4>
+                        <p>
+                            Mediciones de espesor por ultrasonido en puntos críticos 
+                            (codos, reducciones, zonas de alta velocidad) cada 2-5 años 
+                            según la tasa de corrosión.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">05</div>
+                    <div class="practice-content">
+                        <h4>Válvulas de Calentamiento</h4>
+                        <p>
+                            Instalar válvulas bypass de calentamiento en válvulas mayores 
+                            a 2". Nunca abrir bruscamente una válvula grande de aislamiento 
+                            de vapor.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">06</div>
+                    <div class="practice-content">
+                        <h4>Tratamiento de Agua</h4>
+                        <p>
+                            Mantener programa de tratamiento químico: pH 9-11, eliminación 
+                            de oxígeno disuelto, control de sólidos. La corrosión es 
+                            prevenible con química correcta.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">07</div>
+                    <div class="practice-content">
+                        <h4>Aislamiento Térmico</h4>
+                        <p>
+                            Mantener aislamiento en buen estado. El aislamiento dañado 
+                            causa condensación excesiva y aumenta el riesgo de golpe 
+                            de ariete.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="practice-item">
+                    <div class="practice-number">08</div>
+                    <div class="practice-content">
+                        <h4>Capacitación del Personal</h4>
+                        <p>
+                            Operadores deben entender los peligros del vapor, reconocer 
+                            señales de problemas (ruidos, vibraciones, fugas) y conocer 
+                            procedimientos de emergencia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box fade-in" style="margin-top: 3rem;">
+                <h4><i class="fas fa-shield-alt"></i> Principio Fundamental de Seguridad</h4>
+                <p>
+                    <strong>"Si está goteando, está fallando."</strong> Cualquier fuga visible de vapor 
+                    o condensado indica un problema que debe investigarse inmediatamente. Las fugas 
+                    pequeñas preceden a las fallas grandes. Nunca ignore una fuga "menor" - 
+                    evalúe, documente y repare según procedimiento.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: References -->
+    <section class="section" id="referencias">
+        <div class="section-container">
+            <div class="section-header fade-in">
+                <div class="section-number">08</div>
+                <h2 class="section-title">Referencias Normativas</h2>
+                <p class="section-subtitle">
+                    Códigos y estándares aplicables para sistemas de vapor
+                </p>
+            </div>
+
+            <div class="references-list fade-in">
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME B31.1</strong>
+                        Power Piping - Código para tuberías de potencia
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME B31.3</strong>
+                        Process Piping - Código para tuberías de proceso
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME BPVC Sección I</strong>
+                        Rules for Construction of Power Boilers
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME B16.5</strong>
+                        Pipe Flanges and Flanged Fittings
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME B16.20</strong>
+                        Metallic Gaskets for Pipe Flanges
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME B16.21</strong>
+                        Nonmetallic Flat Gaskets for Pipe Flanges
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASME B36.10M</strong>
+                        Welded and Seamless Wrought Steel Pipe
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASTM A106</strong>
+                        Seamless Carbon Steel Pipe for High-Temperature Service
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>ASTM A335</strong>
+                        Seamless Ferritic Alloy-Steel Pipe
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>National Board NBIC</strong>
+                        Inspection Code - Boilers and Pressure Vessels
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>CSB Reports</strong>
+                        U.S. Chemical Safety Board Investigation Reports
+                    </div>
+                </div>
+                <div class="reference-item">
+                    <i class="fas fa-file-alt reference-icon"></i>
+                    <div class="reference-text">
+                        <strong>EPRI TR-106438</strong>
+                        Water Hammer Handbook for Nuclear Plant Engineers
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="assets/dml_logo.png" alt="DML Ingenieros Consultores" class="footer-logo">
+            <div class="footer-info">
+                <h3>DML Ingenieros Consultores SAS</h3>
+                <p>
+                    Especialistas en diseño y análisis de procesos fisicoquímicos para la industria 
+                    química, farmacéutica, alimenticia y energética. Más de 20 años de experiencia 
+                    en consultoría de ingeniería.
+                </p>
+            </div>
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Colombia</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@dmlingenieros.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <span>www.dmlingenieros.com</span>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 DML Ingenieros Consultores SAS. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+                    Presentación técnica para uso interno del equipo de ingeniería
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add scroll progress indicator
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 3px;
+                background: linear-gradient(90deg, #1B7340, #2A9D5C);
+                z-index: 10001;
+                transition: width 0.1s ease;
+            `;
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollProgress = (window.scrollY / scrollHeight) * 100;
+                progressBar.style.width = scrollProgress + '%';
+            });
+        });
+    </script>
+</body>
+</html>
